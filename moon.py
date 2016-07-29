@@ -29,7 +29,7 @@ def getMoonPhase(date):
 
 def interpretMoonPhase(phase):
     """
-    Translate decimal phase into common language for moon phases.
+    Translate phase into common language for moon phases.
     """
     if phase == 0 or phase == 30:
         return "New Moon"
