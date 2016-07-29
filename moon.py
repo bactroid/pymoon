@@ -3,6 +3,7 @@
 
 import datetime
 import math
+import sys
 
 
 def getMoonPhase(date):
@@ -46,10 +47,15 @@ def interpretMoonPhase(phase):
 
 
 def main():
-    user_date = "2015-12-25"
+    if len(sys.argv) == 2:
+        user_date = sys.argv[1]
+    else:
+        now = datetime.datetime.now()
+        user_date = (str(now.year) + "-" + str(now.month).zfill(2) + "-" +
+                     str(now.day).zfill(2))
     phase = getMoonPhase(user_date)
-    print (user_date + ": " + interpretMoonPhase(phase) + " (" + str(phase) +
-           " days into cycle)")
+    print(user_date + ": " + interpretMoonPhase(phase) + " (" + str(phase) +
+          " days into cycle)")
 
 if __name__ == "__main__":
     main()
