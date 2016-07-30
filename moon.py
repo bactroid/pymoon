@@ -29,9 +29,7 @@ def getMoonPhase(date):
 
 
 def interpretMoonPhase(phase):
-    """
-    Translate phase into common language for moon phases.
-    """
+    """Translate phase into common language for moon phases."""
     if phase == 0 or phase == 30:
         return "New Moon"
     if phase > 0 and phase < 7.5:
@@ -47,6 +45,7 @@ def interpretMoonPhase(phase):
 
 
 def main():
+    """Run program if called directly."""
     if len(sys.argv) == 2:
         user_date = sys.argv[1]
     else:
