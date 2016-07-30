@@ -4,6 +4,7 @@
 import datetime
 import math
 import sys
+import collections
 
 
 def getMoonPhase(date):
@@ -44,6 +45,21 @@ def interpretMoonPhase(phase):
         return "Waning Crescent"
 
 
+def getNextPhase(phase):
+    """Get next full or new moon time."""
+    if phase == 0 or phase == 30 or phase == 15:
+        return None
+    NextPhase = collections.namedtuple("NextPhase", ["next_phase", "days"])
+    if phase < 15:
+        NextPhase.days = int(15 - phase)
+        NextPhase.next_phase = "Full Moon"
+        return NextPhase
+    if phase < 30:
+        NextPhase.days = int(30 - phase)
+        NextPhase.next_phase = "New Moon"
+        return NextPhase
+
+
 def main():
     """Run program if called directly."""
     if len(sys.argv) == 2:
@@ -55,6 +71,9 @@ def main():
     phase = getMoonPhase(user_date)
     print(user_date + ": " + interpretMoonPhase(phase) + " (" + str(phase) +
           " days into cycle)")
+    NextPhase = getNextPhase(phase)
+    if NextPhase:
+        print NextPhase.next_phase + " in " + str(NextPhase.days) + " days."
 
 if __name__ == "__main__":
     main()
