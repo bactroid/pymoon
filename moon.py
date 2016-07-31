@@ -12,9 +12,7 @@ def getMoonPhase(date):
     Get decimal moon phase for a date.
 
     Date should be in the format YYYY-MM-DD.
-    Moon phase will be a decimal number between 0 and 1 where...
-    0,1 = New moon
-    0.5 = Full Moon
+    Returns the day of the lunar cycle (0-29).
 
     Algorithm influenced by Ben Daglish:
     http://www.ben-daglish.net/moon.shtml
